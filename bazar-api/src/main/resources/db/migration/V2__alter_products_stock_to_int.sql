@@ -1,0 +1,2 @@
+ALTER TABLE products
+    MODIFY COLUMN stock INT NOT NULL;
