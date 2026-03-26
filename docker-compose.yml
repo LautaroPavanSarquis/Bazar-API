@@ -1,23 +1,22 @@
 services:
-  mysql:
-    image: mysql:8.4
-    container_name: bazar-mysql
+  postgres:
+    image: postgres:16
+    container_name: bazar-postgres
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: bazar_api
-      MYSQL_USER: bazar_user
-      MYSQL_PASSWORD: bazar_pass
-      MYSQL_ROOT_PASSWORD: root_pass
+      POSTGRES_DB: bazar_api
+      POSTGRES_USER: bazar_user
+      POSTGRES_PASSWORD: bazar_pass
     ports:
-      - "3306:3306"
+      - "5432:5432"
     volumes:
-      - mysql_data:/var/lib/mysql
+      - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "mysqladmin ping -h localhost -uroot -p$$MYSQL_ROOT_PASSWORD || exit 1"]
+      test: ["CMD-SHELL", "pg_isready -U bazar_user -d bazar_api"]
       interval: 10s
       timeout: 5s
       retries: 10
       start_period: 25s
 
 volumes:
-  mysql_data:
+  postgres_data:

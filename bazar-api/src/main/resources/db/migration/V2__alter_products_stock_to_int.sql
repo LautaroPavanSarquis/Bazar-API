@@ -1,2 +1,2 @@
 ALTER TABLE products
-    MODIFY COLUMN stock INT NOT NULL;
+ALTER COLUMN stock TYPE INT USING stock::INT;

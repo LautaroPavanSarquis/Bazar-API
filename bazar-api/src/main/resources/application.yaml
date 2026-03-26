@@ -2,7 +2,7 @@ spring:
   application:
     name: bazar-api
   datasource:
-    url: ${DB_URL:jdbc:mysql://localhost:3306/bazar_api?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC}
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/bazar_api}
     username: ${DB_USERNAME:bazar_user}
     password: ${DB_PASSWORD:bazar_pass}
   jpa:
