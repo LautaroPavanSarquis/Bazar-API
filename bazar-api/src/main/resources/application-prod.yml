@@ -1,11 +1,12 @@
 spring:
   jpa:
     show-sql: false
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     properties:
       hibernate:
         format_sql: false
-        temp:
-          use_jdbc_metadata_defaults: false
+        boot:
+          allow_jdbc_metadata_access: false
   datasource:
     hikari:
       connection-timeout: 20000
